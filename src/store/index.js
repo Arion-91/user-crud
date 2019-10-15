@@ -31,8 +31,8 @@ let store = new Vuex.Store({
 	getters: {
 		users: state => {
 			return state.users.filter(user => {
-				return (state.filter.id && user.id === state.filter.id) ||
-					(state.filter.name && user.name === state.filter.name);
+				return (!state.filter.id || state.filter.id && user.id == state.filter.id) &&
+					(!state.filter.name || state.filter.name && user.name.includes(state.filter.name));
 			})
 		}
 	},

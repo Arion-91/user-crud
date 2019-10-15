@@ -81,9 +81,13 @@
 		position: relative;
 		top: 30vh;
 		background-color: rgba(44, 62, 80, 1);
-		width: 40%;
+		width: 50%;
 		margin: 0 auto;
 		border-radius: 5px;
+
+		@media (max-width: 768px) {
+			width: 90%;
+		}
 	}
 
 	.inputs {

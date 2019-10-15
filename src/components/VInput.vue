@@ -16,7 +16,6 @@
 	input {
 		display: block;
 		padding: 6px 12px;
-		margin: 6px 3px;
 		width: 100%;
 		border-radius: 5px;
 		font-size: 1rem;

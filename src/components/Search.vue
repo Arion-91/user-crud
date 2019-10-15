@@ -1,18 +1,18 @@
 <template>
 	<div class="wrap">
 		<span>Поиск</span>
-		<Input id="user-id" label="ID"/>
-		<Input id="user-name" label="Наименование"/>
+		<VInput id="user-id" label="ID"/>
+		<VInput id="user-name" label="Наименование"/>
 	</div>
 </template>
 
 <script>
-	import Input from "@/components/Input";
+	import VInput from "@/components/VInput";
 
 	export default {
 		name: "Search",
 		components: {
-			Input
+			VInput
 		}
 	}
 </script>

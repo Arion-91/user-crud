@@ -9,6 +9,7 @@ const storageKey = 'users';
 function updateLocaleStorage(data) {
 	localStorage.setItem(storageKey, JSON.stringify(data))
 }
+
 const testData = [
 	{id: 1, name: 'name 1'},
 	{id: 2, name: 'name 2'},
@@ -20,7 +21,20 @@ localStorage.setItem(storageKey, JSON.stringify(testData));
 
 let store = new Vuex.Store({
 	state: {
+		filter: {
+			id: null,
+			name: ''
+		},
 		users: USE_LOCALE_STORAGE && JSON.parse(localStorage.getItem(storageKey)) || [],
+	},
+
+	getters: {
+		users: state => {
+			return state.users.filter(user => {
+				return (state.filter.id && user.id === state.filter.id) ||
+					(state.filter.name && user.name === state.filter.name);
+			})
+		}
 	},
 
 	mutations: {
@@ -43,6 +57,12 @@ let store = new Vuex.Store({
 		deleteUser(state, id) {
 			state.users = state.users.filter(user => user.id === id);
 			updateLocaleStorage(state.users);
+		},
+		setFilter(state, payload) {
+			state.filter = {
+				...state.filter,
+				...payload
+			};
 		}
 	},
 });

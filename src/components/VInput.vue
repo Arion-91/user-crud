@@ -1,11 +1,14 @@
 <template>
-	<input :id="id" type="text" :placeholder="label">
+	<input :id="id" type="text" :placeholder="label" :value="value" @change="func">
 </template>
 
 <script>
 	export default {
 		name: "SearchInput",
-		props: ['id', 'label']
+		props: ['id', 'label', 'value', 'func'],
+		methods: {
+
+		}
 	}
 </script>
 

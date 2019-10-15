@@ -1,11 +1,11 @@
 <template>
-	<button :name="name" type="button" :class="type">{{label}}</button>
+	<button :name="name" type="button" :class="type" @click="func">{{label}}</button>
 </template>
 
 <script>
 	export default {
 		name: "VButton",
-		props: ['name', 'type', 'label']
+		props: ['name', 'type', 'label', 'func']
 	}
 </script>
 

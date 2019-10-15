@@ -1,9 +1,9 @@
 <template>
 	<div class="wrap">
 		<span>Поиск</span>
-		<VInput id="user-id" label="ID"/>
-		<VInput id="user-name" label="Наименование"/>
-		<VButton name="clear" label="X" type="delete"/>
+		<VInput id="user-id" label="ID" :value="search.id" :func="setId"/>
+		<VInput id="user-name" label="Наименование" :value="search.name" :func="setName"/>
+		<VButton name="clear" label="X" type="delete" :func="clearFilter"/>
 	</div>
 </template>
 
@@ -16,6 +16,31 @@
 		components: {
 			VInput,
 			VButton
+		},
+		computed: {
+			search() {
+				return this.$store.state.filter;
+			}
+		},
+		methods: {
+			filter() {
+				this.$store.setFilter({
+					id: this.id,
+					name: this.name
+				})
+			},
+			setId(e) {
+				this.$store.commit('setFilter', {id: e.target.value})
+			},
+			setName(e) {
+				this.$store.commit('setFilter', {name: e.target.value})
+			},
+			clearFilter() {
+				this.$store.commit('setFilter', {
+					id: null,
+					name: ''
+				})
+			}
 		}
 	}
 </script>

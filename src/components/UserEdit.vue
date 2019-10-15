@@ -1,5 +1,5 @@
 <template>
-	<div class="wrap">
+	<div :class="['wrap', isEdit ? 'show' : 'hide']">
 		<div class="card">
 			<h2>{{isNew ? "Добавление" : "Редактирование"}} пользователя</h2>
 			<div class="inputs">
@@ -29,6 +29,11 @@
 			VButton,
 			VInput
 		},
+		computed: {
+			isEdit() {
+				return this.$store.state.isEdit;
+			}
+		},
 		methods: {
 			changeName(e) {
 				this.name = e.target.value;
@@ -37,13 +42,21 @@
 
 			},
 			cancel() {
-
+				this.$store.commit('switchEditUser');
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	.show {
+		display: block;
+	}
+
+	.hide {
+		display: none;
+	}
+
 	.wrap {
 		position: fixed;
 		background-color: rgba(44, 62, 80, 0.51);

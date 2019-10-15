@@ -26,6 +26,11 @@ let store = new Vuex.Store({
 			name: ''
 		},
 		users: USE_LOCALE_STORAGE && JSON.parse(localStorage.getItem(storageKey)) || [],
+		isEdit: false,
+		user: {
+			id: null,
+			name: ''
+		}
 	},
 
 	getters: {
@@ -63,6 +68,12 @@ let store = new Vuex.Store({
 				...state.filter,
 				...payload
 			};
+		},
+		switchEditUser(state, id) {
+			state.isEdit = !state.isEdit;
+			if (id) {
+				state.user = state.users.find(item => item.id == id);
+			}
 		}
 	},
 });

@@ -11,7 +11,7 @@
 			<td class="item-id">{{user.id}}</td>
 			<td class="item-name">{{user.name}}</td>
 			<td class="buttons">
-				<VButton name="update" label="Изменить" type="update" :func="editUser"/>
+				<VButton name="update" label="Изменить" type="update" :func="() => editUser(user.id)"/>
 				<VButton name="update" label="Удалить" type="delete" :func="() => removeUser(user.id)"/>
 			</td>
 		</tr>
@@ -33,13 +33,13 @@
 		},
 		methods: {
 			addUser() {
-
+				this.$store.commit('switchEditUser');
 			},
-			editUser() {
-
+			editUser(id) {
+				this.$store.commit('switchEditUser', id);
 			},
 			removeUser(id) {
-				this.$store.commit('deleteUser', id)
+				this.$store.commit('deleteUser', id);
 			}
 		}
 	}

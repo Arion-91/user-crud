@@ -3,16 +3,19 @@
 		<h1>Список пользователей</h1>
 		<Search/>
 		<List/>
+		<UserEdit/>
 	</div>
 </template>
 
 <script>
 	import List from "@/components/List";
 	import Search from "@/components/Search";
+	import UserEdit from "@/components/UserEdit";
 
 	export default {
 		name: 'app',
 		components: {
+			UserEdit,
 			List,
 			Search
 		}

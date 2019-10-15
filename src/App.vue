@@ -1,5 +1,6 @@
 <template>
 	<div id="app">
+		<h1>Список пользователей</h1>
 		<Header/>
 		<List/>
 	</div>
@@ -18,11 +19,23 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	* {
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
+	}
+
+	h1 {
+		text-align: left;
+		padding: 6px;
+		color: #495057;
+		background-color: #e9ecef;
+
+		@media (max-width: 768px) {
+			text-align: center;
+			font-size: 24px;
+		}
 	}
 
 	#app {

@@ -1,7 +1,7 @@
 <template>
 	<div :class="['wrap', isEdit ? 'show' : 'hide']">
 		<div class="card">
-			<h2>{{isNew ? "Добавление" : "Редактирование"}} пользователя</h2>
+			<h2>{{isNew ? "Добавление" : "Редактирование"}} пользователя{{user.id ? " #" + user.id : ""}}</h2>
 			<div class="inputs">
 				<VInput id="user-id" label="Наименование" :value="user.name" :func="changeName"/>
 				<div>
@@ -19,11 +19,6 @@
 
 	export default {
 		name: "UserEdit",
-		data() {
-			return {
-				name: '',
-			}
-		},
 		components: {
 			VButton,
 			VInput
@@ -95,6 +90,6 @@
 	}
 
 	h2 {
-		padding: 6px;
+		padding: 10px 20px;
 	}
 </style>

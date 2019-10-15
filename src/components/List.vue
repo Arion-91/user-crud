@@ -3,7 +3,9 @@
 		<tr class="head">
 			<th>ID</th>
 			<th>Наименование</th>
-			<th></th>
+			<th>
+				<VButton name="update" label="Добавить" type="update"/>
+			</th>
 		</tr>
 		<tr v-for="user in users" :key="user.id" class="item">
 			<td class="item-id">{{user.id}}</td>

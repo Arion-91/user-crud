@@ -14,7 +14,6 @@
 		height: 28px;
 		padding: 6px 12px;
 		margin: 3px;
-		width: 45%;
 		color: #ffffff;
 		box-shadow:
 			0 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -26,7 +25,7 @@
 		font-weight: 500;
 		text-transform: uppercase;
 
-		@media (max-width: 425px) {
+		@media (max-width: 768px) {
 			width: 100%;
 		}
 	}

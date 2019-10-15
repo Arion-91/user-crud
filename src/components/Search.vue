@@ -3,16 +3,19 @@
 		<span>Поиск</span>
 		<VInput id="user-id" label="ID"/>
 		<VInput id="user-name" label="Наименование"/>
+		<VButton name="clear" label="X" type="delete"/>
 	</div>
 </template>
 
 <script>
 	import VInput from "@/components/VInput";
+	import VButton from "@/components/VButton";
 
 	export default {
 		name: "Search",
 		components: {
-			VInput
+			VInput,
+			VButton
 		}
 	}
 </script>
@@ -31,6 +34,15 @@
 			padding: 6px;
 			font-weight: 600;
 		}
+	}
+
+	.buttons {
+		/*flex-direction: row;*/
+		/*width: 10%;*/
+
+		/*@media (max-width: 768px) {*/
+		/*	width: 100%;*/
+		/*}*/
 	}
 
 	@media (max-width: 768px) {

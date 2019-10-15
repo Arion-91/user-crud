@@ -39,16 +39,17 @@ let store = new Vuex.Store({
 				return (!state.filter.id || state.filter.id && user.id == state.filter.id) &&
 					(!state.filter.name || state.filter.name && user.name.includes(state.filter.name));
 			})
-		}
+		},
+		isNewUser: state => !state.user.id
 	},
 
 	mutations: {
 		createUser(state, name) {
 			let lastId = state.users.reduce((prev, curr) => {
-				return prev < curr ? curr : prev;
+				return prev < curr.id ? curr.id : prev.id;
 			}, 0);
-			state.users.add({
-				id: lastId++,
+			state.users.push({
+				id: ++lastId,
 				name
 			});
 			updateLocaleStorage(state.users);
@@ -73,6 +74,17 @@ let store = new Vuex.Store({
 			state.isEdit = !state.isEdit;
 			if (id) {
 				state.user = state.users.find(item => item.id == id);
+			} else {
+				state.user = {
+					id: null,
+					name: ''
+				}
+			}
+		},
+		editUser(state, payload) {
+			state.user = {
+				...state.user,
+				...payload
 			}
 		}
 	},

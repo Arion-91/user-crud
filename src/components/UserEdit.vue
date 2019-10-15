@@ -3,7 +3,7 @@
 		<div class="card">
 			<h2>{{isNew ? "Добавление" : "Редактирование"}} пользователя</h2>
 			<div class="inputs">
-				<VInput id="user-id" label="Наименование" :value="name" :func="changeName"/>
+				<VInput id="user-id" label="Наименование" :value="user.name" :func="changeName"/>
 				<div>
 					<VButton name="save" label="Сохранить" type="save" :func="updateUser"/>
 					<VButton name="cancel" label="Отмена" type="cancel" :func="cancel"/>
@@ -19,7 +19,6 @@
 
 	export default {
 		name: "UserEdit",
-		props: ['isNew'],
 		data() {
 			return {
 				name: '',
@@ -32,14 +31,25 @@
 		computed: {
 			isEdit() {
 				return this.$store.state.isEdit;
+			},
+			isNew() {
+				return this.$store.getters.isNewUser;
+			},
+			user() {
+				return this.$store.state.user;
 			}
 		},
 		methods: {
 			changeName(e) {
-				this.name = e.target.value;
+				this.$store.commit('editUser', {name: e.target.value})
 			},
 			updateUser() {
-
+				if (this.user.id) {
+					this.$store.commit('updateUser', this.user);
+				} else {
+					this.$store.commit('createUser', this.user.name);
+				}
+				this.cancel();
 			},
 			cancel() {
 				this.$store.commit('switchEditUser');

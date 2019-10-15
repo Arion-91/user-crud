@@ -3,17 +3,27 @@
 		<tr class="head">
 			<th>ID</th>
 			<th>Наименование</th>
+			<th></th>
 		</tr>
 		<tr v-for="user in users" :key="user.id" class="item">
 			<td class="item-id">{{user.id}}</td>
 			<td class="item-name">{{user.name}}</td>
+			<td class="buttons">
+				<VButton name="update" label="Изменить" type="update"/>
+				<VButton name="update" label="Удалить" type="delete"/>
+			</td>
 		</tr>
 	</table>
 </template>
 
 <script>
+	import VButton from "@/components/VButton";
+
 	export default {
 		name: "List",
+		components: {
+			VButton
+		},
 		computed: {
 			users() {
 				return this.$store.state.users;
@@ -30,6 +40,7 @@
 	table {
 		border-collapse: collapse;
 	}
+
 	th, td {
 		padding: 12px;
 	}
@@ -45,6 +56,7 @@
 		&-id {
 			font-weight: 600;
 		}
+
 		&-name {
 			text-align: left;
 		}
@@ -55,4 +67,10 @@
 		background-color: #e9ecef;
 		border-color: #dee2e6;
 	}
+
+	.buttons {
+		width: 30%;
+	}
+
+
 </style>

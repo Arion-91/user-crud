@@ -3,16 +3,24 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-const USE_LOCALE_STORAGE = process.env.USE_LOCALE_STORAGE == 1;
+const USE_LOCALE_STORAGE = process.env.VUE_APP_USE_LOCALE_STORAGE == 1;
 const storageKey = 'users';
 
 function updateLocaleStorage(data) {
-	localStorage.setItem(storageKey, JSON.parse(data))
+	localStorage.setItem(storageKey, JSON.stringify(data))
 }
+const testData = [
+	{id: 1, name: 'name 1'},
+	{id: 2, name: 'name 2'},
+	{id: 3, name: 'name 3'},
+	{id: 4, name: 'name 4'},
+	{id: 5, name: 'name 5'},
+];
+localStorage.setItem(storageKey, JSON.stringify(testData));
 
 let store = new Vuex.Store({
 	state: {
-		users: USE_LOCALE_STORAGE && JSON.stringify(localStorage.getItem(storageKey)) || [],
+		users: USE_LOCALE_STORAGE && JSON.parse(localStorage.getItem(storageKey)) || [],
 	},
 
 	mutations: {

@@ -12,7 +12,7 @@
 			<td class="item-name">{{user.name}}</td>
 			<td class="buttons">
 				<VButton name="update" label="Изменить" type="update" :func="editUser"/>
-				<VButton name="update" label="Удалить" type="delete" :func="removeUser"/>
+				<VButton name="update" label="Удалить" type="delete" :func="() => removeUser(user.id)"/>
 			</td>
 		</tr>
 	</table>
@@ -38,8 +38,8 @@
 			editUser() {
 
 			},
-			removeUser() {
-
+			removeUser(id) {
+				this.$store.commit('deleteUser', id)
 			}
 		}
 	}

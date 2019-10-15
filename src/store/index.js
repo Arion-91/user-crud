@@ -55,7 +55,7 @@ let store = new Vuex.Store({
 			updateLocaleStorage(state.users);
 		},
 		deleteUser(state, id) {
-			state.users = state.users.filter(user => user.id === id);
+			state.users = state.users.filter(user => user.id !== id);
 			updateLocaleStorage(state.users);
 		},
 		setFilter(state, payload) {

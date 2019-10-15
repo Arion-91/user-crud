@@ -10,15 +10,6 @@ function updateLocaleStorage(data) {
 	localStorage.setItem(storageKey, JSON.stringify(data))
 }
 
-const testData = [
-	{id: 1, name: 'name 1'},
-	{id: 2, name: 'name 2'},
-	{id: 3, name: 'name 3'},
-	{id: 4, name: 'name 4'},
-	{id: 5, name: 'name 5'},
-];
-localStorage.setItem(storageKey, JSON.stringify(testData));
-
 let store = new Vuex.Store({
 	state: {
 		filter: {

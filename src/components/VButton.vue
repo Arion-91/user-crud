@@ -1,5 +1,7 @@
 <template>
-	<button :name="name" type="button" :class="type" @click="func">{{label}}</button>
+	<div class="wrap-button">
+		<button :name="name" type="button" :class="type" @click="func">{{label}}</button>
+	</div>
 </template>
 
 <script>
@@ -10,10 +12,19 @@
 </script>
 
 <style lang="scss" scoped>
+	.wrap-button {
+		display: inline-block;
+		margin: 3px;
+
+		@media (max-width: 768px) {
+			width: 100%;
+			margin: 3px 0;
+		}
+	}
+
 	button {
 		height: 28px;
 		padding: 6px 12px;
-		margin: 3px;
 		color: #ffffff;
 		box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
 		0 2px 2px 0 rgba(0, 0, 0, 0.14),

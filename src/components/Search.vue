@@ -10,7 +10,7 @@
 	import Input from "@/components/Input";
 
 	export default {
-		name: "Header",
+		name: "Search",
 		components: {
 			Input
 		}

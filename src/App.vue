@@ -1,20 +1,20 @@
 <template>
 	<div id="app">
 		<h1>Список пользователей</h1>
-		<Header/>
+		<Search/>
 		<List/>
 	</div>
 </template>
 
 <script>
 	import List from "@/components/List";
-	import Header from "@/components/Header";
+	import Search from "@/components/Search";
 
 	export default {
 		name: 'app',
 		components: {
 			List,
-			Header
+			Search
 		}
 	}
 </script>

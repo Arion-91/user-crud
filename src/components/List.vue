@@ -4,15 +4,15 @@
 			<th>ID</th>
 			<th>Наименование</th>
 			<th>
-				<VButton name="update" label="Добавить" type="update"/>
+				<VButton name="update" label="Добавить" type="update" :func="addUser"/>
 			</th>
 		</tr>
 		<tr v-for="user in users" :key="user.id" class="item">
 			<td class="item-id">{{user.id}}</td>
 			<td class="item-name">{{user.name}}</td>
 			<td class="buttons">
-				<VButton name="update" label="Изменить" type="update"/>
-				<VButton name="update" label="Удалить" type="delete"/>
+				<VButton name="update" label="Изменить" type="update" :func="editUser"/>
+				<VButton name="update" label="Удалить" type="delete" :func="removeUser"/>
 			</td>
 		</tr>
 	</table>
@@ -29,6 +29,17 @@
 		computed: {
 			users() {
 				return this.$store.getters.users;
+			}
+		},
+		methods: {
+			addUser() {
+
+			},
+			editUser() {
+
+			},
+			removeUser() {
+
 			}
 		}
 	}

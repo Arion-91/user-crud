@@ -8,39 +8,42 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
 	import VInput from "@/components/VInput";
 	import VButton from "@/components/VButton";
 
-	export default {
-		name: "Search",
+	@Component({
 		components: {
 			VInput,
 			VButton
-		},
-		computed: {
-			search() {
-				return this.$store.state.filter;
-			}
-		},
-		methods: {
-			filter() {
-				this.$store.setFilter({
-					id: this.id,
-					name: this.name
-				})
-			},
-			setId(e) {
-				this.$store.commit('setFilter', {id: e.target.value})
-			},
-			setName(e) {
-				this.$store.commit('setFilter', {name: e.target.value})
-			},
-			clearFilter() {
-				this.$store.commit('setFilter', {
-					id: null,
-					name: ''
-				})
-			}
+		}
+	})
+	export default class Search extends Vue {
+		get search() {
+			return this.$store.state.filter;
+		}
+
+		filter() {
+			this.$store.setFilter({
+				id: this.id,
+				name: this.name
+			})
+		}
+
+		setId(e) {
+			this.$store.commit('setFilter', {id: e.target.value})
+		}
+
+		setName(e) {
+			this.$store.commit('setFilter', {name: e.target.value})
+		}
+
+		clearFilter() {
+			this.$store.commit('setFilter', {
+				id: null,
+				name: ''
+			})
 		}
 	}
 </script>

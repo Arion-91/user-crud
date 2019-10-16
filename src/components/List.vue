@@ -19,28 +19,30 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
 	import VButton from "@/components/VButton";
 
-	export default {
-		name: "List",
+	@Component({
 		components: {
 			VButton
-		},
-		computed: {
-			users() {
-				return this.$store.getters.users;
-			}
-		},
-		methods: {
-			addUser() {
-				this.$store.commit('switchEditUser');
-			},
-			editUser(id) {
-				this.$store.commit('switchEditUser', id);
-			},
-			removeUser(id) {
-				this.$store.commit('deleteUser', id);
-			}
+		}
+	})
+	export default class List extends Vue {
+		get users() {
+			return this.$store.getters.users;
+		}
+
+		addUser() {
+			this.$store.commit('switchEditUser');
+		}
+
+		editUser(id) {
+			this.$store.commit('switchEditUser', id);
+		}
+
+		removeUser(id) {
+			this.$store.commit('deleteUser', id);
 		}
 	}
 </script>
@@ -84,6 +86,4 @@
 	.buttons {
 		width: 30%;
 	}
-
-
 </style>

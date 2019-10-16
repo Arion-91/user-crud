@@ -5,9 +5,13 @@
 </template>
 
 <script>
-	export default {
-		name: "SearchInput",
-		props: ['id', 'label', 'value', 'func'],
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
+
+	@Component({
+		props: ['id', 'label', 'value', 'func']
+	})
+	export default class SearchInput extends Vue {
 	}
 </script>
 

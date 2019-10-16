@@ -5,9 +5,13 @@
 </template>
 
 <script>
-	export default {
-		name: "VButton",
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
+
+	@Component({
 		props: ['name', 'type', 'label', 'func']
+	})
+	export default class VButton extends Vue {
 	}
 </script>
 

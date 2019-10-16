@@ -14,41 +14,45 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
 	import VButton from "@/components/VButton";
 	import VInput from "@/components/VInput";
 
-	export default {
-		name: "UserEdit",
+	@Component({
 		components: {
-			VButton,
-			VInput
-		},
-		computed: {
-			isEdit() {
-				return this.$store.state.isEdit;
-			},
-			isNew() {
-				return this.$store.getters.isNewUser;
-			},
-			user() {
-				return this.$store.state.user;
+			VInput,
+			VButton
+		}
+	})
+	export default class UserEdit extends Vue {
+		get isEdit() {
+			return this.$store.state.isEdit;
+		}
+
+		get isNew() {
+			return this.$store.getters.isNewUser;
+		}
+
+		get user() {
+			return this.$store.state.user;
+		}
+
+		changeName(e) {
+			this.$store.commit('editUser', {name: e.target.value})
+		}
+
+		updateUser() {
+			if (this.user.id) {
+				this.$store.commit('updateUser', this.user);
+			} else {
+				this.$store.commit('createUser', this.user.name);
 			}
-		},
-		methods: {
-			changeName(e) {
-				this.$store.commit('editUser', {name: e.target.value})
-			},
-			updateUser() {
-				if (this.user.id) {
-					this.$store.commit('updateUser', this.user);
-				} else {
-					this.$store.commit('createUser', this.user.name);
-				}
-				this.cancel();
-			},
-			cancel() {
-				this.$store.commit('switchEditUser');
-			}
+			this.cancel();
+		}
+
+		cancel() {
+			this.$store.commit('switchEditUser');
 		}
 	}
 </script>

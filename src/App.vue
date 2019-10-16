@@ -8,17 +8,20 @@
 </template>
 
 <script>
+	import Vue from 'vue'
+	import Component from 'vue-class-component'
 	import List from "@/components/List";
 	import Search from "@/components/Search";
 	import UserEdit from "@/components/UserEdit";
 
-	export default {
-		name: 'app',
+	@Component({
 		components: {
 			UserEdit,
 			List,
 			Search
 		}
+	})
+	export default class App extends Vue {
 	}
 </script>
 
